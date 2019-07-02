@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <button id="btn" type="button">点我发送请求</button>
+    </body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+    <script type="text/javascript">
+        $("#btn").click(function(){
+            // 创建WebSocket 对象
+            var ws = new WebSocket("wss://127.0.0.1:9527/ws");
+            //连接成功时，触发事件
+            ws.onopen = function () {
+                //请求参数
+                var param = {"id": 1,"command": "account_info","account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"};
+                // 使用 send() 方法发送数据
+                ws.send(JSON.stringify(param));
+                alert("数据发送中...");
+            };
+            //接收到服务端响应的数据时，触发事件
+            ws.onmessage = function (evt) {
+                var data = evt.data;
+                alert("收到数据..."+data);
+            };
+            // 断开 web socket 连接成功触发事件
+            ws.onclose = function () {
+                alert("连接已关闭...");
+            };
+        });
+    </script>
+</html>

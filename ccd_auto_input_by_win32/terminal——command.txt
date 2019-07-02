@@ -1,0 +1,1 @@
+pyinstaller -F -i favicon.ico -w run.py -p auto_input_ui.py -p auto_input_win32.py  --hidden-import auto_input_ui --hidden-import auto_input_win32

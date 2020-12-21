@@ -1,4 +1,4 @@
-# 用于分析querySet的装饰器
+# 用于分析querySet耗时的装饰器
 from timeit import default_timer as timer
 from django.db import connection, reset_queries
 
